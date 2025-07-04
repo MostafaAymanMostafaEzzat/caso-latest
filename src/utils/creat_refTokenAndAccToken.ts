@@ -24,7 +24,15 @@ export default async function createRefTokenAndAccToken({user, req , tokenUser ,
     }
     refreshToken=existingToken.refreshToken;
     attachCookiesToResponse({ user: { ...tokenUser, image: tokenUser.image ?? "" }, refreshToken });
+     if(google){
+    
+    return NextResponse.redirect(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/${Link}` || process.env.NEXT_PUBLIC_SERVER_URL!
+    );
+
+  }else{
     return Response.json({ user: tokenUser },{status:200})
+  }
     
   }
   refreshToken= crypto.randomBytes(40).toString('hex');
