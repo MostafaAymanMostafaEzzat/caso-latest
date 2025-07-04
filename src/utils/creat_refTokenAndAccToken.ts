@@ -23,7 +23,7 @@ export default async function createRefTokenAndAccToken({user, req , tokenUser ,
     return CustomError.UnauthenticatedError('your account is blocked');
     }
     refreshToken=existingToken.refreshToken;
-    attachCookiesToResponse({ user: tokenUser , refreshToken });
+    attachCookiesToResponse({ user: { ...tokenUser, image: tokenUser.image ?? "" }, refreshToken });
     return Response.json({ user: tokenUser },{status:200})
     
   }
