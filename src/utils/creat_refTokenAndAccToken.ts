@@ -8,7 +8,7 @@ import { NextResponse } from "next/server";
 const bcrypt = require('bcrypt');
 
 
-export default async function createRefTokenAndAccToken({user, req , tokenUser , google = false , Link}: {user:any, req:Request , tokenUser:{ userId: string, role: string , image:string ,name:string } , google?: boolean, Link?: string}) {
+export default async function createRefTokenAndAccToken({user, req , tokenUser , google = false , Link}: {user:any, req:Request , tokenUser:{ userId: string, role: string , image:string | null ,name:string } , google?: boolean, Link?: string}) {
 
     let refreshToken=''
   //check if there are existingToken for that user
