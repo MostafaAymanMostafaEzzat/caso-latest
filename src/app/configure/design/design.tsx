@@ -45,6 +45,7 @@ import Link from "next/link";
 import { useUploadThing } from "@/lib/uploadthing";
 import {  useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
+import useScreenSize from "@/components/customHooks/screenSize";
 
 export default function DesignOflient({
   imgUrl,
@@ -60,10 +61,11 @@ export default function DesignOflient({
   const router = useRouter()
   const containerRef = useRef<HTMLDivElement | null>(null);
   const phoneCaceRef = useRef<HTMLDivElement | null>(null);
-  const [position, setPosition] = useState({ x: 200, y: 150 });
+  let screenSize = window.matchMedia('(max-width: 1024px)').matches
+  const [position, setPosition] = useState({ x: screenSize? 100 : 260, y:  screenSize? 300 : 250 });
   const [Dimention, setDimention] = useState({
-    width: width / 4,
-    height: height / 4,
+    width:screenSize? width / 7 : width/7,
+    height:screenSize? height / 3 : height/4,
   });
   const {isUploading,startUpload} = useUploadThing('imageUploader')
   const { toast } = useToast()
@@ -149,7 +151,7 @@ export default function DesignOflient({
         ref={containerRef}
         className="h-[37.5rem]  relative col-span-1 lg:col-span-2  outline-slate-400/15 rounded-lg flex justify-center items-center p-10 overflow-hidden w-full border-2 border-dashed border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
       >
-        <div className="relative w-60 bg-opacity-50 pointer-events-none aspect-[896/1831]  ">
+        <div className="relative w-60 bg-opacity-50 pointer-events-none aspect-[896/1831]   ">
           <AspectRatio
             className="relative   w-full z-[4]  aspect-[896/1831] pointer-events-none"
             ref={phoneCaceRef}
@@ -172,7 +174,7 @@ export default function DesignOflient({
           />
         </div>
         <Rnd
-          className="  relative z-[2] max-md:max-w-8 text-center "
+          className=" z-[2] "
           default={{ ...position, ...Dimention }}
           onDragStop={(_, { x, y }) => {
             setPosition({ x, y });
@@ -191,7 +193,7 @@ export default function DesignOflient({
             topLeft: <MoveUpLeft className=" w-5 h-5 bg-green-500/25" />,
           }}
         >
-          <img src={imgUrl} className=" w-full h-full pointer-events-none" />
+          <img src={imgUrl} className="w-full h-full pointer-events-none" />
         </Rnd>
       </div>
       <div className="col-span-1 w-full flex flex-col h-[37.5rem] ">
