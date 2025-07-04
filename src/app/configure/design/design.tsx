@@ -45,7 +45,6 @@ import Link from "next/link";
 import { useUploadThing } from "@/lib/uploadthing";
 import {  useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
-import useScreenSize from "@/components/customHooks/screenSize";
 
 export default function DesignOflient({
   imgUrl,
