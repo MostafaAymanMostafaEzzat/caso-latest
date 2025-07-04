@@ -61,7 +61,7 @@ export default function DesignOflient({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const phoneCaceRef = useRef<HTMLDivElement | null>(null);
   let screenSize = window.matchMedia('(max-width: 1024px)').matches
-  const [position, setPosition] = useState({ x: screenSize? 70 : 260, y:  screenSize? 300 : 250 });
+  const [position, setPosition] = useState({ x: screenSize? 50 : 260, y:  screenSize? 300 : 250 });
   const [Dimention, setDimention] = useState({
     width:screenSize? width / 10 : width/7,
     height:screenSize? height / 10 : height/4,
