@@ -13,7 +13,7 @@ const createJWT = ({ payload } : {payload :{}}) => {
 
 export const isTokenValid = ( token : string ) => jwt.verify( token, process.env.JWT_SECRET!);
 
-export function attachCookiesToResponse ({ user ,refreshToken } :{ user:{ userId:string, role: string , image:string , name: string } ,refreshToken:string }) {
+export function attachCookiesToResponse ({ user ,refreshToken } :{ user:{ userId:string, role: string , image:string | null , name: string } ,refreshToken:string }) {
   const accessTokenJWT  = createJWT({ payload: {user} });
   const refreshTokenJWT  = createJWT({ payload: {user,refreshToken} });
 
