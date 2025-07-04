@@ -172,7 +172,7 @@ export default function DesignOflient({
           />
         </div>
         <Rnd
-          className="  relative z-[2] "
+          className="  relative z-[2] max-md:max-w-24 text-center "
           default={{ ...position, ...Dimention }}
           onDragStop={(_, { x, y }) => {
             setPosition({ x, y });
