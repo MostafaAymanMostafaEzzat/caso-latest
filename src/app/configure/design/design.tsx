@@ -63,8 +63,8 @@ export default function DesignOflient({
   let screenSize = window.matchMedia('(max-width: 1024px)').matches
   const [position, setPosition] = useState({ x: screenSize? 100 : 260, y:  screenSize? 300 : 250 });
   const [Dimention, setDimention] = useState({
-    width:screenSize? width / 7 : width/7,
-    height:screenSize? height / 3 : height/4,
+    width:screenSize? width / 10 : width/7,
+    height:screenSize? height / 10 : height/4,
   });
   const {isUploading,startUpload} = useUploadThing('imageUploader')
   const { toast } = useToast()
