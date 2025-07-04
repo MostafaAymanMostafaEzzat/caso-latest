@@ -3,8 +3,8 @@ import { oauth2Client  } from "@/lib/googleAuth";
 
 
 export async function POST(req:NextRequest) {
-
-    const {state} = await req.json();
+try {
+  const {state} = await req.json();
     // console.log("State:", state)
 const scopes = [
   'openid',
@@ -21,4 +21,10 @@ const scopes = [
 });
 
   return NextResponse.json(authorizationUrl,{status:200})
+} catch (error) {
+
+       console.error("OAuth2 redirect error:", error);
+    return new Response("Authentication failed", { status: 500 });
+}
+    
 }

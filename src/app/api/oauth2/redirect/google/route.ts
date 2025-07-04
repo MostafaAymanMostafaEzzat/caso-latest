@@ -54,5 +54,8 @@ export const GET = async (req: NextRequest) => {
     }
 
    
-  } catch (error) {}
+  } catch (error) {
+       console.error("OAuth2 redirect error:", error);
+    return new Response("Authentication failed", { status: 500 });
+  }
 };
